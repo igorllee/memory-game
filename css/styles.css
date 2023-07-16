@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 
+/* RESET */
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html, body, a {
@@ -10,6 +12,7 @@ html, body, a {
   text-decoration: none;
 }
 
+/* CARDS */
 .card {
   width: 150px;
   height: 150px;
@@ -47,4 +50,31 @@ html, body, a {
 
 .icon {
   width: 100px;
+}
+
+/* GAME OVER */
+#gameOver {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .9);
+  color: #FFFFFF;
+  font-size: 24pt;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+}
+
+#restart {
+  color: #101c2c;
+  padding: 20px;
+  font-size: 16pt;
+  background-color: #ffff00;
+  border: none;
+  border-radius: 10px;
+  margin-top: 10px;
+  cursor: pointer;
 }
