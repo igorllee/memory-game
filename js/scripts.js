@@ -12,29 +12,51 @@ let techs = ['bootstrap',
   'node',
   'react'];
 
-  createCardsFromTechs(techs);
-  function createCardsFromTechs(techs){
-    let cards = [];
+let cards = null;
 
-    for(let tech of techs){
-      cards.push(createPairFromTech(tech));
-    }
+startGame();
 
-    return cards.flatMap(pair => pair);
+function startGame(){
+  cards = createCardsFromTechs(techs);
+  shuffleCards(cards);
+  console.log(cards)
+}
+
+function shuffleCards(cards){
+  let currentIndex = cards.length;
+  let randomIndex = 0;
+
+  while(currentIndex !== 0){
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    [cards[randomIndex], cards[currentIndex]] = [cards[currentIndex], cards[randomIndex]];
+  }
+}
+
+createCardsFromTechs(techs);
+function createCardsFromTechs(techs){
+  let cards = [];
+
+  for(let tech of techs){
+    cards.push(createPairFromTech(tech));
   }
 
-  function createPairFromTech(tech){
-    return [{
-      id: createIdWithTech(tech),
-      icon: tech,
-      flipped: false
-    }, {
-      id: createIdWithTech(tech),
-      icon: tech,
-      flipped: false
-    }]
-  }
+  return cards.flatMap(pair => pair);
+}
 
-  function createIdWithTech(tech) {
-    return tech + parseInt(Math.random() * 1000);
-  }
+function createPairFromTech(tech){
+  return [{
+    id: createIdWithTech(tech),
+    icon: tech,
+    flipped: false
+  }, {
+    id: createIdWithTech(tech),
+    icon: tech,
+    flipped: false
+  }]
+}
+
+function createIdWithTech(tech) {
+  return tech + parseInt(Math.random() * 1000);
+}
