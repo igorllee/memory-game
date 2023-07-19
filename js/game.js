@@ -3,9 +3,19 @@ let game = {
   firstCard: null,
   secondCard: null,
 
+  techs: ['bootstrap',
+    'css',
+    'electron',
+    'firebase',
+    'html',
+    'javascript',
+    'jquery',
+    'mongo',
+    'node',
+    'react'],
+
   setCard: function(id){
     let card = this.cards.filter(card=>card.id === id)[0];
-    console.log(card);
     if(card.flipped || this.lockMode){
       return false;
     }
@@ -41,16 +51,9 @@ let game = {
     this.clearCards();
   },
 
-  techs: ['bootstrap',
-    'css',
-    'electron',
-    'firebase',
-    'html',
-    'javascript',
-    'jquery',
-    'mongo',
-    'node',
-    'react'],
+  checkGameOver: function (){
+    return this.cards.filter(card => !card.flipped).length === 0;
+  },
 
   cards: null,
 
